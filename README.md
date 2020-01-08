@@ -8,7 +8,7 @@
 
 Process large CSV files in batches without backpressure
 
-The CSV is streamed in batches and paused while you perform async operations on each batch to prevent backpressure building up.
+The CSV is streamed in batches and the stream is paused while you perform async operations on each batch to prevent backpressure building up.
 
 Uses [`csv-parser`](https://github.com/mafintosh/csv-parser) under the hood
 
@@ -21,9 +21,9 @@ $ npm install batch-stream-csv
 ## Usage:
 
 ```js
-const bs = require('batch-stream-csv');
+const batch = require('batch-stream-csv');
 
-bs('./file.csv', batchHandler, options).then(() => console.log('All done!'))
+batch('./file.csv', batchHandler, options).then(() => console.log('All done!'))
 
 async function batchHandler (batch, progress) => {
   console.log(batch) // batch of rows parsed as JSON, e.g. [{ a: 1, b: 2 }, {  a: 2, b: 3 }]
