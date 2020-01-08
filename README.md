@@ -8,7 +8,7 @@
 
 Process large CSV files in batches without backpressure
 
-The CSV is streamed in batches and the stream is paused while you perform async operations on each batch to prevent backpressure building up.
+The CSV is streamed in batches and the stream is paused while you perform async operations on each batch to prevent backpressure building up
 
 Uses [`csv-parser`](https://github.com/mafintosh/csv-parser) under the hood
 
