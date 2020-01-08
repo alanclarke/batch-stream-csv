@@ -4,7 +4,8 @@
   "description": "Process large CSV files in batches without backpressure",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --reporter=lcov --reporter=text-summary ava"
+    "test": "nyc --reporter=lcov --reporter=text-summary ava",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +14,7 @@
   },
   "devDependencies": {
     "ava": "^2.4.0",
+    "coveralls": "^3.0.9",
     "nyc": "^15.0.0",
     "sinon": "^8.0.4",
     "standard": "^14.3.1"
