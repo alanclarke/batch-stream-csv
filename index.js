@@ -7,12 +7,11 @@ module.exports = async function csvBatchMap (file, fn, options = {}) {
   let read = 0
 
   return new Promise((resolve, reject) => {
-    let rows = []
-
+    const rows = []
     const rs = fs.createReadStream(file)
     rs
       .pipe(csv(options))
-      .on('headers', function processHeaders (headers) {
+      .on('headers', function processHeaders () {
         read += this.state.rowLength
       })
       .on('data', async function processRow (data) {
@@ -22,7 +21,7 @@ module.exports = async function csvBatchMap (file, fn, options = {}) {
       })
       .on('end', async () => {
         if (rows.length) await flush()
-        resolve() 
+        resolve()
       })
 
     async function flush () {
