@@ -1,6 +1,12 @@
 const csv = require('csv-parser')
 const fs = require('fs')
 
+/**
+ * Process large CSV files in batches without backpressure
+ * @param {string} file - path to the csv file on your file system
+ * @param {function} fn - async function to apply on each batch
+ * @param {Object} options - optional options object including 'batchSize' and options from 'csv-parser'
+ */
 module.exports = async function csvBatchMap (file, fn, options = {}) {
   const batchSize = options.batchSize || 5000
   const { size } = await fs.promises.stat(file)
